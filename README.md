@@ -15,9 +15,7 @@ The RESTful API interacts with Vogogo via https://api.vogogo.com/api/payment/v1/
 
 Below is an example of an invoice being created using [curl](http://curl.haxx.se/ "Curl").
 
-    {{{
     curl --dump-header - -H "Content-Type: application/json" -X POST --data '{"number": "1234", "customer_ref": "Mr. Joe Jacob Blow", "customer_emails": "joe@example.com", "customer_contact_info": "123 Fake ST\nCalgary\nAlberta\n403.987.1231", "profile_name": "Jims Snow Removal", "profile_emails": "snow@example.com", "profile_contact_info": "403.123.1234", "po": "1234",  "currency": "CAD", "accept_cc": "True", "accept_obp": "True", "due_date": "2012-10-10", "message": "This is your invoice for services rendered.", "paid": "False", "items": [{"code": "GOLFPINK2012", "description": "Dozen pink golf balls", "unit_price": "24.99", "quantity": "2"},{"code": "EXTREMECLUBS-M", "description": "2012 Extreme Awesome Mens Golf Clubs", "unit_price": "824.99", "quantity": "1"},{"description": "Size club shafts", "unit_price": "124.00", "quantity": "2.5", "tax":"GST"}]}' https://api.vogogo.com/api/payment/v1/invoice/?user=landlord@example.com\&api_key=user_test_api_key\&app_token=test_app_token
-    }}}
 
 curl is setting the Content-Type to application/json and performing a POST with the body of the POST containing a JSON collection of name/value pairs. The last argument to curl is the URL in which the data should be posted. In the above example the URL has three parameters attached, these are your authentication credentials. It is also possible to pass them as HTTP Headers.
 
