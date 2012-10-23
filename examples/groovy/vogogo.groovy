@@ -56,7 +56,7 @@ switch (entity) {
 						message: "This is your invoice for services rendered.",
 						items: [[code: 'GOLFPINK2012', description: 'Dozen pink golf balls', unit_price: '24.99', quantity: '2'],
 								[code: 'EXTREMECLUBS-M', description: '2012 Extreme Awesome Mens Golf Clubs', unit_price: '824.99', quantity: '1'],
-								[description: 'Size club shafts', unit_price: '124.00', quantity: '2.5']]],
+								[code: 'CLUB-S', description: 'Size club shafts', unit_price: '124.00', quantity: '2.5']]],
 				201)
 		break
 	case "createRecurringInvoice":
@@ -81,9 +81,15 @@ switch (entity) {
 		break
 	case "updateInvoice":
 		invoiceId = args[1]
+
+		//Change the customers email
+		//Remove item 'EXTREMECLUBS-M'
+		//Add Tax to remaining items.
 		execute("patch",
 				"/api/payment/v1/invoice/${invoiceId}/",
-				[customer_emails: "joe.blow@example.com"],
+				[customer_emails: "joe.blow@example.com",
+				items: [[code: 'GOLFPINK2012', description: 'Dozen pink golf balls', unit_price: '24.99', quantity: '2', tax: 'GST'],
+                                                [code: 'CLUB-S', description: 'Size club shafts', unit_price: '124.00', quantity: '2.5', tax: 'GST']]],
 				202)?.each { println it }
 		break
 	default:

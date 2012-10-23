@@ -64,7 +64,7 @@ An invoice can have many items.
 
 **Parameter**   | **Description** | **Required** 
 --------------- | --------------- | ------------
-**code**        | A product code or SKU you want to display for this item.|False
+**code**        | A product code or SKU you want to display for this item.|True
 **description** | Product or service description you want to display for this item.|False
 **unit_price**  | The price of this item. Note: The currency is established by the currency parameter on the invoice. An invoice can only be issued with one currency.|True
 **quantity**    | The number of items being sold. This can either be a decimal or an integer.|True
